@@ -1,0 +1,17 @@
+name: Dockerhub Push for Cold Family Feud
+on: push
+  jobs:
+    build-container:
+      name: Build Docker container image
+      runs-on: ubunt-latest
+      steps:
+        - name: Checkout Code
+          uses: actions/checkout@v2
+        - name: Publish to Github Packages
+          uses: docker/build-push-action@v1
+          with:
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+          registry: docker.pkg.github.com
+          repository: ${{ github.repository }}/next
+          tags: latest, ${{ github.run_number }}
