@@ -5,6 +5,7 @@ COPY . /src
 WORKDIR /src
 
 RUN rm -r node_modules
+RUN rm -f package-lock.json
 RUN npm install
 
 
