@@ -15,5 +15,5 @@ jobs:
         - name: Publish to Dockerhub
           uses: docker/build-push-action@v3
           with:
+            tags: davbay1/cold-family-feud-docker:latest, ${{ github.run_number }}
             push: true
-            tags: user/app:latest, ${{ github.run_number }}
